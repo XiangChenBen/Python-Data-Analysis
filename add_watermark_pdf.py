@@ -15,21 +15,21 @@ def add_watermark(water_file,page_pdf):         #添加水印函数
 # 遍历pdf的每一页,添加水印
 
 # 将把你要添加水印的pdf放在一个文件夹并填写文件夹路径
-Document_file_path = r"D:\精培教育\CFA level 1\讲义\pdf_merger\lecture_notes"
+Document_file_path = r"D:\xx\xx\xx\xx"
 DocumentName = os.listdir(Document_file_path)
 
 
 # 用word生成你要添加水印的一页pdf，放在一个文件夹并填写文件夹路径
-WatermarkName_file_path = r"D:\精培教育\CFA level 1\讲义\pdf_merger\students_watermark"
+WatermarkName_file_path = r"D:\xx\xx\xx\xx"
 WatermarkName= os.listdir(WatermarkName_file_path)
 
 
 for SelectDN in range(len(DocumentName)):                      # 遍历所有文件
-    pdfReader = PyPDF2.PdfFileReader(f"lecture_notes\\{DocumentName[SelectDN]}")   # 读取pdf内容
+    pdfReader = PyPDF2.PdfFileReader(f"D:\\xx\\xx\\xx\\xx{DocumentName[SelectDN]}")   # 读取pdf内容
     for SelectWm in range(len(WatermarkName)):                 # 遍历所有watermark
         pdfWriter = PyPDF2.PdfFileWriter()                     # 用于写pdf
         for page in range(pdfReader.numPages):                 # 遍历pdf的每一页,添加水印
-            page_pdf = add_watermark(f"students_watermark\\{WatermarkName[SelectWm]}", pdfReader.getPage(page))
+            page_pdf = add_watermark(f"D:\\xx\\xx\\xx\\xx{WatermarkName[SelectWm]}", pdfReader.getPage(page))
             pdfWriter.addPage(page_pdf)
 
         with open(WatermarkName[SelectWm][9:-4]+'_'+DocumentName[SelectDN], 'wb') as target_file:  #命名并保存最终pdf
